@@ -1,6 +1,7 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, Content } from 'ionic-angular';
+import { Platform, IonicPage, NavController, NavParams, Content } from 'ionic-angular';
 import { StoreModule } from '../../../providers/store/store';
+import { ToastController } from 'ionic-angular/components/toast/toast-controller';
 
 @IonicPage()
 @Component({
@@ -11,6 +12,8 @@ export class StoreListPage {
   @ViewChild(Content) content: Content;
   categories = [];
   constructor(
+    private mToastController: ToastController,
+    public mPlatform: Platform,
     private navCtrl: NavController,
     private mAppModule: StoreModule,
     private mNavParams: NavParams
@@ -19,6 +22,21 @@ export class StoreListPage {
   }
 
   ionViewDidEnter() {
+    if (this.mPlatform.is("android")) {
+      this.showToast("Platform is Android", 2000);
+    } else if (this.mPlatform.is("ios")) {
+      this.showToast("Platform is IOS", 2000);
+    } else {
+
+    }
+
+  }
+  showToast(message: string, duration: number): void {
+    let toast = this.mToastController.create({
+      message: message,
+      duration: duration
+    });
+    toast.present();
 
   }
   onClickItem(item) {
