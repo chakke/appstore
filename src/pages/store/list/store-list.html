@@ -1,0 +1,33 @@
+<ion-content>
+    <ion-grid class="grid-container">
+        <ion-row class="header" align-items-center>
+            <img src="assets/store/logo.png" (tap)="onClickBack()">
+        </ion-row>
+
+        <ion-row justify-content-center>
+            <ion-slides loop="true" pager style="max-width:480px">
+                <ion-slide><img src="assets/store/banner_1.png"></ion-slide>
+                <ion-slide><img src="assets/store/banner_2.png"></ion-slide>
+                <ion-slide><img src="assets/store/banner_3.png"></ion-slide>
+            </ion-slides>
+        </ion-row>
+        <ion-row>
+            <ion-col *ngFor="let category of categories">
+                <div class="category-header">
+                    <div> {{category.title}} </div>
+                </div>
+                <ion-row>
+                    <ion-col col-4 col-md-3 col-lg-2 *ngFor="let item of category.items">
+                        <div class="item-container" (click)="onClickItem(item)">
+                            <div class="item-icon">
+                                <img src={{item.icon}}>
+                            </div>
+                            <div class="item-name"> {{item.name}}</div>
+                        </div>
+                    </ion-col>
+                </ion-row>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>

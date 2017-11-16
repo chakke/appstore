@@ -1,14 +1,11 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
-
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <div text-center padding>
+        <h2>Welcom to APPINASIA</h2>
+    </div>
+    <div *ngFor="let app of _apps" (click)="onClickOpenApp(app)" class="app-item">
+        <div text-center>
+            <img src={{app.icon}} class="app-icon">
+        </div>
+        <div text-center class="app-item-name"> {{app.name}}</div>
+    </div>
 </ion-content>
